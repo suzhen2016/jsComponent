@@ -14,7 +14,7 @@ app.get('/', function (req, res) {
         text:'111111',
         true:'222222',
         521:'33333',
-        arr:[{name:'4444',age:'5555',false:'6666'}],
+        arr:[4444,55555,66666],
         script:'zuihou'
     }
     console.log(index(obj,'','','post'))
