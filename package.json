@@ -1,0 +1,14 @@
+{
+  "name": "component",
+  "version": "1.0.0",
+  "description": "js组件库，小运用。代码规范组价化。",
+  "main": "index.js",
+  "scripts": {
+    "test": "实时更新维护"
+  },
+  "author": "苏镇",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
