@@ -1,6 +1,11 @@
 'use strict';
 //var module = {};
-var stringifyPrimitive = function(v) {
+const index_3 = require('./index_03')
+const index_4 = require('./index_04')
+const index_5 = require('./index_05')
+const fs =require('fs')
+
+var stringifyPrimitive = function (v) {
   switch (typeof v) {
     case 'string':
       return v;
@@ -16,7 +21,8 @@ var stringifyPrimitive = function(v) {
   }
 };
 
-module.exports = function(obj, sep, eq, name) {
+//最终暴露的主函数；
+module.exports = function (obj, sep, eq, name) {
   sep = sep || '&';
   eq = eq || '=';
   if (obj === null) {
@@ -24,10 +30,10 @@ module.exports = function(obj, sep, eq, name) {
   }
 
   if (typeof obj === 'object') {
-    return map(objectKeys(obj), function(k) {
+    return map(objectKeys(obj), function (k) {
       var ks = encodeURIComponent(stringifyPrimitive(k)) + eq;
       if (isArray(obj[k])) {
-        return map(obj[k], function(v) {
+        return map(obj[k], function (v) {
           return ks + encodeURIComponent(stringifyPrimitive(v));
         }).join(sep);
       } else {
@@ -39,14 +45,15 @@ module.exports = function(obj, sep, eq, name) {
 
   if (!name) return '';
   return encodeURIComponent(stringifyPrimitive(name)) + eq +
-         encodeURIComponent(stringifyPrimitive(obj));
+    encodeURIComponent(stringifyPrimitive(obj));
 };
 
+//判定是不是数组；
 var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-function map (xs, f) {
+function map(xs, f) {
   if (xs.map) return xs.map(f);
   var res = [];
   for (var i = 0; i < xs.length; i++) {
@@ -62,3 +69,76 @@ var objectKeys = Object.keys || function (obj) {
   }
   return res;
 };
+
+/**
+ * 毫秒值转换时间对象的案列
+ * @param {*} val 
+ * @param {*} options 
+ */
+function getMilliseconds(val, options) {
+  options = options || {};
+  var type = typeof val;
+  if (type === 'string' && val.length > 0) {
+    return String(val);
+  } else if (type === 'number' && isNaN(val) === false) {
+    return options.long ? fmtLong(val) : fmtShort(val);
+  }
+  throw new Error(
+    'val is not a non-empty string or a valid number. val=' +
+    JSON.stringify(val)
+  );
+};
+//getMilliseconds(NaN)
+
+/**
+ * 准确的es6回调的数据格式
+ */
+function factory($q, touchid) {
+  return {
+    authenticate: function (authReasonText) {
+      var defer = $q.defer();  //定制promise对象；
+      if (!window.cordova) {
+        defer.reject('Not supported without cordova.js');
+      } else {
+        touchid.authenticate(function (value) {
+          defer.resolve(value); //成功的返回
+        }, function (err) {
+          defer.reject(err); // 失败的返回
+        }, authReasonText);
+      }
+      return defer.promise;
+    }
+  };
+};
+
+
+/**
+ * 测试index_03的功能；
+ * 数组去重；
+ */
+console.log(index_3.immutable([1,2,3,1,1,2,16,8,9,0,2,1]))
+
+/**
+ * 测试外部方法index_03的功能
+ */
+// console.log(index_3.show());
+
+/**
+ * 测试index_04的数组快速排序
+ */
+console.log(index_4.sortArr([5,3,7,1,4],0,4));
+
+/**
+ * 引入node js的fs模块
+ * */
+// console.log('fs',fs)
+
+/**
+ * index_05的数组求和
+ * */
+console.log('index_05数据求和=13',index_5.sum([3,5,1,4]))
+/**
+ * 
+ * index_05 利用set 去重加求交集
+ * */
+console.log('index_05数据的交集=3，5，7 ===>',index_5.getArrJiao([1,2,3,4,1,3,5,7],[9,7,9,6,3,5,7]))

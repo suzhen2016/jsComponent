@@ -9,6 +9,11 @@
   "author": "苏镇",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "jquery": "^3.3.1",
+    "node": "^11.1.0",
+    "request": "^2.88.0",
+    "require": "^2.4.20",
+    "zepto": "^1.2.0"
   }
 }

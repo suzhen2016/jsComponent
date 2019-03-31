@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>联通沃支付工具订单支付功能测试</title>
+</head>
+<body>
+    <form name="form1" method="post" action="http://192.168.3.248:18082/api/offer/detail">
+       <input type="text" name='id' value="5a6ef0820634cabafefc3688">
+        
+        <button type='submit'>支付</button>
+        <button id= 'btn'>jquery POST</button>
+    </form>
+    <form name="form2" method="post" action="http://mertest.unicompayment.com/CashierWeb/servlet/MerOrderPayReqServlte.htm?reqCharSet=UTF-8">
+         <input type="text" name="interfaceVersion" value="2.0.0.0">
+         <input type="text" name="tranType" value="20101">
+         <input type="text" name="merNo" value="301100710007142">
+         <!-- 商户号 -->
+         <input type="text" name="goodsName" value="测试名字">
+         <input type="text" name="orderDate" value="20180206">
+         <input type="text" name="orderNo" value="20180206155541224"> 
+         <!-- 定单号    ！！！！！！！！！！                                -->
+         <input type="text" name="amount" value="10">
+         <input type="text" name="charSet" value="UTF-8">
+         <!-- 须与请求url中reqCharSet字符集一致 -->
+         <input type="text" name="tradeMode" value="0001">
+         <input type="text" name="reqTime" value="20180206155541">
+         <!-- 时间      ！！！！！！！！！！！        -->
+         <input type="text" name="respMode" value="1">
+         <input type="text" name="callbackUrl" value="http://credit.e-wto.com/#/rsc/paySuccess">
+         <input type="text" name="serverCallUrl" value="http://60.205.146.196:18027/api/company/pay_price_success">
+         <!-- 回调地址 -->
+         <input type="text" name="signType" value="RSA_SHA256">
+         <!-- 签名类型 -->
+         <input type="text" name="payProducts" value="B2BWY|YE|B2CWY|FKB">
+         <input type="text" name="merSign" value="D1ntQW%2FBNPk%2F2J%2B79qnZfUMwDF45MM23gZ%2F7cJcSHXcOFv3WwAKCmayVghybw7Q7PF4X0V7HgHG%2Br7VhoX1zQb%2BVDx5jNkmRy3pzdLrxn71D%2FGDGpotaxSkt4e%2FiCS9Hn7VmqD0MplgkSPsGSmxn%2F3CDQ0AuT%2Br9J5eTOHGRrueiWow%2B7nkbZd0UF8omxIBNySCbhqdxr7xOyH5xBUi7BR5FZ3IikJ5kw%2BSanSQ9s4CSFoe6bgmpQZuU8jJ19OJKmPyCFp9EQlZZz7WjBPGvVoUvUChmtIKlYh5IVsiD6OiiC3ri0vhJF4TL%2BprWFmFhhH6SO6YDlvAJUdyQ%2F7qtDw%3D%3D">
+         <!-- 签名串 需要加密验签 ！！！！！！-->
+         <button type='submit'>支付</button>
+     </form>
+
+</body>
+   <script src="../../node_modules/jquery/dist/jquery.js"></script>
+
+    <script>
+        (
+            function(){
+                var datapost = {id:'5a6ef0820634cabafefc3688'}
+                $('#btn').click(function(){
+                    $.ajax({
+                        url:'http://192.168.3.248:18082/api/offer/detail',
+                        type:"POST",
+                        data:datapost,
+                        dataType:'json',
+                        success:function(data){
+                            alert(1);
+                            window.open("http://www.baidu.com","blank")
+                           // location.href='http://www.baidu.com'
+                            console.log('请求成功的',data)
+                        }
+                    })
+                    
+                })
+            }
+        )()
+    
+    </script>
+</html>
+
+
+     
