@@ -139,6 +139,13 @@ console.log(index_4.sortArr([5,3,7,1,4],0,4));
 console.log('index_05数据求和=13',index_5.sum([3,5,1,4]))
 /**
  * 
- * index_05 利用set 去重加求交集
+ * index_05 去重加求交集
  * */
 console.log('index_05数据的交集=3，5，7 ===>',index_5.getArrJiao([1,2,3,4,1,3,5,7],[9,7,9,6,3,5,7]))
+
+/*
+*
+*index_05 处理按条件返回整理之后的数组
+**/ 
+let line =   { code: 0, data: { lines: '20路,301路,5路,地铁5号线,机场大巴线,107路,机场快轨', lineids: 'lzbd,lwes,lxid,lwic,lwdf,ldfx,loin', linedetails: { lwdf: { name: '机场大巴线' }, lwes: { name: '301路' }, lwic: { name: '地铁5号线' }, ldfx: { name: '107路' }, lzbd: { name: '20路' }, lxid: { name: '5路' }, loin: { name: '机场快轨' } } } }
+console.log('index_05返回车次顺序',index_5.getSortLine(line))
