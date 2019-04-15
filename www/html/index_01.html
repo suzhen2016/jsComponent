@@ -26,15 +26,32 @@
         </a>
 </body>
 <script src="../data/linkedList.js"></script>
+<script src="../js/单列模式.js"></script>
 <script>
-    function Save(){    
-        var txt = document.all.output.value; 
-        b = window.open();   
-        b.document.open();   
-        b.document.write(txt);   
-        b.document.close(); 
-        b.document.execCommand('saveas',true,'output.html'); 
-} 
+//     function Save(){    
+//         var txt = document.all.output.value; 
+//         b = window.open();   
+//         b.document.open();   
+//         b.document.write(txt);   
+//         b.document.close(); 
+//         b.document.execCommand('saveas',true,'output.html'); 
+// } 
+    // this的指向问题
+    var name = 'hello'
+    var obj= {
+        name:'你好',
+        say:function(){
+            // this.name = '世界';
+            console.log('内在',this.name)
+            return function () {
+                console.log(this.name)
+            }
+        }
+    }
+    obj.say()()
+    obj.say().call(this)
+
+
 
 </script>
 </html>

@@ -82,9 +82,6 @@ let parse = function (res) {
 
 
 
-
-
-
 module.exports = {
     sum:getSum,
     getArrJiao:getJiao,

@@ -129,6 +129,17 @@ console.log(index_3.immutable([1,2,3,1,1,2,16,8,9,0,2,1]))
 console.log(index_4.sortArr([5,3,7,1,4],0,4));
 
 /**
+ * 测试index_04的数组快速排序
+ */
+console.log('index_4 冒泡排序',index_4.maopao([5,3,7,1,4,8,9]));
+
+/**
+ * 测试index_04的路灯循环展示
+ */
+// console.log(index_4.getLu());
+
+
+/**
  * 引入node js的fs模块
  * */
 // console.log('fs',fs)
@@ -149,3 +160,14 @@ console.log('index_05数据的交集=3，5，7 ===>',index_5.getArrJiao([1,2,3,4
 **/ 
 let line =   { code: 0, data: { lines: '20路,301路,5路,地铁5号线,机场大巴线,107路,机场快轨', lineids: 'lzbd,lwes,lxid,lwic,lwdf,ldfx,loin', linedetails: { lwdf: { name: '机场大巴线' }, lwes: { name: '301路' }, lwic: { name: '地铁5号线' }, ldfx: { name: '107路' }, lzbd: { name: '20路' }, lxid: { name: '5路' }, loin: { name: '机场快轨' } } } }
 console.log('index_05返回车次顺序',index_5.getSortLine(line))
+
+/**
+ * index_04 对象解释迭代器原理obj_iterator
+ * 
+ * */ 
+console.log('迭代器',index_4.obj_iterator())
+
+/**
+ * index_04 函数的原型----面试
+ * */ 
+index_4.proo()
