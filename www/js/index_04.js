@@ -66,13 +66,13 @@ module.exports.sortArr = function(arr,l,h){
 
 //数组的冒泡排序
 module.exports.maopao = function(arr) {
-    let {i,l}={i:0,l:arr.length};
-    for(i;i<l;i++){
+    let {i,l} = {i:0, l:arr.length};
+    for(i; i < l; i++){
         var isOk = true;
         // ddd:
-        for(let j=0;j<l-1-i;j++){
+        for(let j = 0; j < l-1-i; j++){
             
-            if(arr[j]>arr[j+1]){
+            if(arr[j] > arr[j+1]){ // 升序
                 let curent = arr[j+1];
                 arr[j+1] = arr[j];
                 arr[j] = curent;
@@ -81,7 +81,7 @@ module.exports.maopao = function(arr) {
             // continue  终止本次层循环
             // break ddd
         }
-        if(isOk){
+        if (isOk) {
             break;
         }
     }
@@ -184,12 +184,4 @@ module.exports.proo = function() {
     // let a = b = c = 1;
     // console.log('面试 a=b=c=1',a,c)
     console.log('fn.prototype.c--面试',fn.name,fn.c)
-
-
-
-
-
-
-
-
 }

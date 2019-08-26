@@ -76,8 +76,42 @@ let parse = function (res) {
     
 }
 
-
-
+/**
+ * 查询字符串内的子字符串出现的次数与索引值
+ * */ 
+function getStringIndex(str,s) {
+    var str = str,s_l = str.length,l = s.length,num = 0,arr = [];
+    for(var i = 0; i < s_l; i++ ){
+        var slice_s = str.slice(i,i+l)
+        if(slice_s == s){
+            num += 1;
+            arr.push(i);
+            i += l - 1;
+        }
+    }
+    return {num:num,index:arr.join()}
+}
+/**
+ * 数组 二分法查找元素索引
+ * 前提：数组需要是排好序的；
+ * 思路：a.确定该区间的中间位置m ;
+ *      b.将查找的值T与array[m]比较,若相等，查找成功返回此位置；否则确定新的查找区域，继续二分查找
+ *      c.继续二分法查找时只需要改变end或min的指向即可，借助中间索引加或减改变
+*/
+function dichotomy(arr,num) {
+    var min=0,end=arr.length-1;
+    while (min<=end) { //循环终止条件
+        var m = parseInt((min + end) /2)
+        if(arr[m]==num){
+            return m;
+        }else if(arr[m] > num){
+            end = m-1;
+        }else{
+            min = m + 1;
+        }
+        console.log('===========',min,end,arr[m])
+    }
+}
 
 
 
@@ -85,5 +119,7 @@ let parse = function (res) {
 module.exports = {
     sum:getSum,
     getArrJiao:getJiao,
-    getSortLine:parse
+    getSortLine:parse,
+    getStringIndex:getStringIndex,
+    dichotomy:dichotomy
 }
