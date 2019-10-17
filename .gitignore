@@ -6,6 +6,7 @@ platforms/
 plugins/
 bower_components/
 .idea/
+.history/
 \.DS_Store
 
 \package-lock.json

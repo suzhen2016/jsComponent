@@ -166,7 +166,8 @@ console.log('index_05返回车次顺序',index_5.getSortLine(line))
 *index_05 查询子字符串次数以及索引
 **/ 
 let str =   'daabacabcabcabcabchduasacbabcabc'
-console.log('index_05返回车次顺序-6,9,12---6',index_5.getStringIndex(str,'abc'))
+console.log('index_05返回重复子字符串顺序-6,9,12---6',index_5.getStringIndex(str,'abc'))
+console.log('index_05第二种返回重复子字符串顺序-6,9,12---6',index_5.getStringIndex(str,'abc'))
 
 /*
 *
